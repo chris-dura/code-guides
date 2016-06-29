@@ -22,7 +22,7 @@ This means strictly enforcing these agreed upon guidelines at all times. For add
 
 Working on a development team is kind of like having roommates... messy roommates... every so often, you're going to have to wash the dishes that _they_ left in the sink while you were out of town.  
   
-Generally, you should leave _all_ code better off than when you started, so if you find code that violates any of the rules in these guides while completing your story... clean it up. And, *if practical*, clean up commits should be separate from story commits.
+Generally, you should leave _**all**_ code better off than when you started, so if you find code that violates any of the rules in these guides while completing your story... clean it up. And, *if practical*, clean up commits should be separate from story commits.
 
 
 
@@ -31,7 +31,7 @@ Generally, you should leave _all_ code better off than when you started, so if y
 
 ### Indentation
 
-Soft-tabs of four (4) spaces should be used to indent code.
+Soft tabs of four (4) spaces should be used to indent code.
 
 
 
@@ -68,15 +68,14 @@ Always write copy, including headings and code comments, in [sentence case](http
 
 ### The guides
 
-* [HTML code guide](https://github.webapps.rr.com/pages/ux/html-code-guide/)
-* [CSS code guide](https://github.webapps.rr.com/pages/ux/css-code-guide/)
-* [SASS code guide](https://github.webapps.rr.com/pages/ux/sass-code-guide/)
+* [HTML code guide](html-code-guide.md)
+* [CSS code guide](css-code-guide.md)
+* [SASS code guide](sass-code-guide.md)
+* [JavaScript code guide](js-code-guide.md)
 
 
 
 ----------
 
-
-#### Regards
 
 Heavily inspired by [mdo](http://github.com/mdo/code-guide), the [GitHub Styleguide](https://github.com/styleguide) and [css-tricks](http://css-tricks.com/sass-style-guide/).
