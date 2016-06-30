@@ -1,29 +1,6 @@
 # HTML code guide
 Standards for developing baby-smooth HTML code.
 
-
-
-----------
-
-
-
-## Table of contents
-
-
-* [HTML](#html)
-   * [Write valid HTML](#write-valid-html)
-   * [HTML5 doctype](#html5-doctype)
-   * [HTML indentation](#html-indentation)
-   * [Pragmatism over semantics](#pragmatism-over-semantics)
-   * [Elements](#elements)
-   * [Attributes](#attributes)
-      * [Attribute order](#attribute-order)
-   * [Comments](#html-comments)
-   * [JavaScript generated markup](#javascript-generated-markup)
-* [Additional guides](#obrigado)
-
-
-
 ----------
 
 ## Write valid HTML
