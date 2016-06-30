@@ -26,12 +26,7 @@ Standards for developing baby-smooth HTML code.
 
 ----------
 
-
-
-## HTML
-
-
-### Write valid HTML
+## Write valid HTML
 
 All HTML code should be valid HTML5.  
 Terminology used in this guide:
@@ -41,13 +36,79 @@ Terminology used in this guide:
 ````
 
 
-### HTML5 doctype
+## HTML5 doctype
 
 Enforce standards mode in every browser possible with this simple doctype at the beginning of every HTML page.
 
 ````html
-<!DOCTYPE html>
+<!doctype html>
 ````
+
+## Language attribute
+
+Specify the `lang` attribute on the `root` html element, giving the document's language.
+
+````html
+<!doctype html>
+<html lang="en-us">
+  <head>
+  </head>
+</html>
+````
+
+## IE compatibility mode
+
+Unless circumstances require otherwise, it's most useful to instruct IE to use the latest supported mode with **edge mode**.
+
+````html
+<!doctype html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+</head>
+````
+
+## Character encoding
+
+Quickly and easily ensure proper rendering of your content by declaring an explicit character encoding.
+
+````html
+<head>
+  <meta charset="utf-8">
+</head>
+````
+
+## CSS and JavaScript includes
+
+Typically there is no need to specify a type when including CSS and JavaScript files as `text/css` and `text/javascript` are their respective defaults.
+
+````html
+<!-- External CSS -->
+<link rel="stylesheet" href="code-guide.css">
+
+<!-- In-document CSS -->
+<style>
+  /* ... */
+</style>
+
+<!-- JavaScript -->
+<script src="code-guide.js"></script>
+````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### HTML indentation
