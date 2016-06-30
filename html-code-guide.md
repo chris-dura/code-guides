@@ -198,7 +198,7 @@ Whenever possible, avoid superfluous parent elements when writing HTML. Many tim
 
 ## Comments
 
-Keep line-length to a sensible maximum, e.g. 80 columns.
+Keep line-length to a sensible maximum, e.g. 60 columns.
 
 ````html
 
