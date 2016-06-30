@@ -75,22 +75,6 @@ Typically there is no need to specify a type when including CSS and JavaScript f
 
 Strive to maintain HTML standards and semantics, but don't sacrifice pragmatism. Use the least amount of markup with the fewest intricacies whenever possible.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Indentation
 
 Nested elements should be indented once.
@@ -178,13 +162,13 @@ Nested elements should be indented once.
 
 HTML attributes should come in this particular order for easier reading of code. Attributes within the wildcard sub-groupings, and attributes not listed below, should appear in alphabetical order, e.g. `aria-label` after `aria-hidden`.
 
-* class
-* id | name
-* for | href | src | type | value 
-* alt | title
-* role | aria-*
-* data-*
-* ng-*
+* `class`
+* `id`, `name`
+* `for`, `href`, `src`, `type`, `value` 
+* `alt`, `title`
+* `role`, `aria-*`
+* `data-*`
+* `ng-*`
 
 Classes make for great reusable components, so they come first. Ids are more specific and should be used sparingly (e.g., for in-page bookmarks), so they come second.
 
@@ -208,7 +192,7 @@ Whenever possible, avoid superfluous parent elements when writing HTML. Many tim
 ````
 
 **:white_check_mark: Better example:**
-```
+```html
 <img class="avatar" src="...">
 ```
 
