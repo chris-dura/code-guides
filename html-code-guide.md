@@ -94,6 +94,9 @@ Typically there is no need to specify a type when including CSS and JavaScript f
 <script src="code-guide.js"></script>
 ````
 
+## Pragmatism over semantics
+
+Strive to maintain HTML standards and semantics, but don't sacrifice pragmatism. Use the least amount of markup with the fewest intricacies whenever possible.
 
 
 
@@ -111,29 +114,29 @@ Typically there is no need to specify a type when including CSS and JavaScript f
 
 
 
-### HTML indentation
+## Indentation
 
-* Nested elements should be indented once.
+Nested elements should be indented once.
 
-**:no_entry_sign: Don't:**
+**:no_entry_sign: Bad example:**
 
 ````html
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <title>Page title</title>
 </head>
 <body>
-<img src='images/company-logo.png' alt='Company' />
-<h1 class='hello-world'>Hello, world!</h1>
+<img src="images/company-logo.png" alt="Company">
+<h1 class="hello-world">Hello, world!</h1>
 </body>
 </html>
 ````
 
-**:white_check_mark: Do:**
+**:white_check_mark: Good example:**
 
 ````html
-<!DOCTYPE html>
+<!doctype html>
 <html>
    <head>
       <title>Page title</title>
@@ -145,128 +148,120 @@ Typically there is no need to specify a type when including CSS and JavaScript f
 </html>
 ````
 
-
-### Pragmatism over semantics
-
-Strive to maintain HTML standards and semantics, but don't sacrifice pragmatism. Use the least amount of markup with the fewest intricacies whenever possible.
-
-
-### Elements
+## Elements
 
 * Semantic element tags should be used whenever possible.
 * Element names should be lowercase.
-* Elements should always have a closing tag.
-* Self-closing tags should have a space preceding the closing slash (```/```).
+* Don't omit optional closing tags, e.g. `</li>` or `</body>`.
+* Don't include trailing slash in self-closing elements, the HTML5 spec says they're optional.
 
-**:no_entry_sign: Don't:**
+**:no_entry_sign: Bad example:**
 
 ````html
 <div id="header">This Is My Header</div>
 <div id="footer">
-  <img src="hello.jpg"/><br>
+  <img src="hello.jpg" /><br />
+  <hr/>
   All rights reserved.
 </div>
 ````
 
-**:white_check_mark: Do:**
+**:white_check_mark: Good example:**
 
 ````html
 <header>This Is My Header</header>
 <footer>
-   <img src="hello.jpg" /><br />
+   <img src="hello.jpg"><br>
+   <hr>
    <p>All rights reserved.</p>
 </footer>
 ````
 
-
-### Attributes
+## Attributes
 
 * Attributes should be lowercase.
-* Always use double quotes (```"```), never single quotes.
+* Always use double quotes, never single quotes.
 * Boolean attributes should be used without quoted values to avoid redundancy.
 
-**:no_entry_sign: Don't:**
+**:no_entry_sign: Bad example:**
 
 ````html
 <p class='line note' Data-Attribute=106>This is my paragraph of special text.</p>
-<audio src="file.mp3" autoplay="autoplay"></audio>
+<audio src='file.mp3' autoplay='autoplay'></audio>
 ````
 
-**:white_check_mark: Do:**
+**:white_check_mark: Good example:**
 
 ````html
 <p class="line note" data-attribute="106">This is my paragraph of special text.</p>
 <audio src="file.mp3" autoplay></audio>
 ````
 
-#### Attribute order
+### Attribute order
 
 HTML attributes should come in this particular order for easier reading of code. Attributes within the wildcard sub-groupings, and attributes not listed below, should appear in alphabetical order, e.g. `aria-label` after `aria-hidden`.
 
-* id
-* class | name
-* for | href | src | type | value | ...
-* aria-*
+* class
+* id | name
+* for | href | src | type | value 
+* alt | title
+* role | aria-*
 * data-*
 * ng-*
 
-Such that your markup looks like:
+Classes make for great reusable components, so they come first. Ids are more specific and should be used sparingly (e.g., for in-page bookmarks), so they come second.
 
 ````html
-<a id="" class="" href="" aria-label="" data-modal="" ng-if="" >Example link</a>
-<input id="" class="" name="" type="" value="" />
+<a class="..." id="..." href="#" data-toggle="modal">Example link</a>
+
+<input class="form-control" type="text">
+
+<img src="..." alt="..." ng-if="...">
 ````
 
+## Reducing markup
+Whenever possible, avoid superfluous parent elements when writing HTML. Many times this requires iteration and refactoring, but produces less HTML.
 
-### HTML Comments
-
-* Section comments are separated from the previous block by two lines, and should have one following line of space.
-* Prepend section headings with an equal sign (```=```), to make a _Find_ operation easier.
+**:no_entry_sign: Not great example:**
 
 ````html
+<span class="avatar">
+  <img src="...">
+</span>
+````
+
+**:white_check_mark: Better example:**
+```
+<img class="avatar" src="...">
+```
+
+## Comments
+
+Keep line-length to a sensible maximum, e.g. 80 columns.
+
+````html
+
+<!-- Section comment block
+     =================================================== -->
+
 <div class="hello"><div>
 
+<!-- Sub-section comment block
+     ===================== -->
 
-<!-- ================================================================================ -->
-<!-- =Main -->
-<!-- ================================================================================ -->
- 
 <div class="goodbye"></div>
-````
-
-* Section chunks are preceded by only one line of space.
-
-````html
-<div class="hello"><div>
-
-<!-- ==================== -->
-<!-- =Main chunk -->
-<!-- ==================== -->
- 
-<div class="goodbye"></div>
-````
-
-````html
-<div class="hello"></div>
 
 <!--
  For longer, multiple line comments that need more room,
  add a newline before and after the comment.
  Leave one line of space before the next block.
 -->
- 
-<div class="goodbye"></div>
+
+<!-- Basic comments: one line with no trailing space. -->
+
 ````
 
-````html
-<!-- Short comments: one line with no trailing space. -->
-<div class="hello">
-   <p>Hello, World!</p>
-</div>
-````
-
-* Because all closing tags look the same, commenting the closing tags can be useful.  
-* A closing slash followed by a descriptor of the opening tag should be used.
+Because all closing tags look the same, commenting the closing tags can be useful. A closing slash followed by a descriptor of the opening tag should be used.
 
 ````html
 <div class="hello">
@@ -274,17 +269,10 @@ Such that your markup looks like:
 </div><!-- /.hello -->
 ````
 
+## JavaScript generated markup
 
-### JavaScript generated markup
-
-:no_entry_sign: Writing markup in a javascript file makes the content harder to find, harder to edit, and less performant. Don't do it.
-
-
+:no_entry_sign: Writing markup in a javascript file makes the content harder to find, harder to edit, and less performant. **Don't do it**.
 
 ----------
 
-
-
-#### Obrigado
-
-General principles and [additional guides](https://github.webapps.rr.com/pages/ux/code-guides#the-guides).
+[General code principles](README.md) and [additional guides](README.md#the-guides).
