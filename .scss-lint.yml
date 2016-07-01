@@ -1,0 +1,24 @@
+# Default application configuration that all configurations inherit from.
+
+exclude: 'styles/shame.scss' # exclude shame
+
+linters:
+
+  Comment:
+    enabled: false
+
+  Indentation:
+    enabled: true
+    width: 4
+
+  LeadingZero:
+    enabled: true
+    style: include_zero # or exclude_zero
+
+  SpaceBeforeBrace:
+    enabled: true
+    allow_single_line_padding: true
+
+  StringQuotes:
+    enabled: true
+    style: double_quotes # or single_quotes
