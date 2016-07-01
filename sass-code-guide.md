@@ -256,18 +256,18 @@ If you need to make a quick fix, you can do it here. Later when you have proper 
 ## Linting
 There are now several Sass linting tools available out there.
 
-### CSScomb
+### [CSScomb](http://csscomb.com/)
 
-[CSScomb](http://csscomb.com/) has many capabilities, including being able to work with `*.scss` files. Currently, I actually only make use of the [plugin for Sublime Text](https://github.com/csscomb/sublime-csscomb) to lint my files as I'm authoring them.
+CSScomb has many capabilities, including being able to work with `*.scss` files. Currently, I actually only make use of the [plugin for Sublime Text](https://github.com/csscomb/sublime-csscomb) to lint my files as I'm authoring them.
 
-### SASS Lint
+### [SASS Lint](https://github.com/sasstools/sass-lint)
 
-For compile-time linting, I recommend [SASS Lint](https://github.com/sasstools/sass-lint). SCSS Lint is a young sass/scss linting tool that can be configured to inform you when you don't adhere to *most* of the rules. It isn't quite on par with `scss-lint`, but it's probably good enough. It's also written in Node and has a `gulp` plugin, giving it the advantage over the Ruby-based `scss-lint`. There is a sample [`sass-lint.yml`] included in this repo enforcing the rules it can, and it also details which rules from `scss-lint` it is missing.
+For compile-time linting, I recommend SASS Lint. SCSS Lint is a young sass/scss linting tool that can be configured to inform you when you don't adhere to *most* of the rules. It isn't quite on par with `scss-lint`, but it's probably good enough. It's also written in Node and has a `gulp` plugin, giving it the advantage over the Ruby-based `scss-lint`. There is a sample [`.sass-lint.yml`](.sass-lint.yml) config file included in this repo enforcing the rules it can, and it also details which rules from `scss-lint` it is missing.
 
-### SCSS Lint
+### [SCSS Lint](https://github.com/causes/scss-lint)
 
-If you don't mind having a Ruby dependency in your project, then [SCSS Lint](https://github.com/causes/scss-lint) is for you. It's a very mature and popular scss linting tool that can be configured to inform you when you don't adhere to these rules. To date, it enforces all the above rules, and several more.
-Included in this repo is an example `scss-lint.yml` configuration file which is already set up to enforce most of these guidelines.
+If you don't mind having a Ruby dependency in your project, then SCSS Lint is for you. It's a very mature and popular scss linting tool that can be configured to inform you when you don't adhere to these rules. To date, it enforces all the above rules, and several more.
+Included in this repo is an example [`.scss-lint.yml`](.scss-lint.yml) configuration file which is already set up to enforce most of these guidelines.
 
 
 ----------
