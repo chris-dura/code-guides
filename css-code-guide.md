@@ -1,268 +1,368 @@
-# SASS code guide
+# CSS code guide
 
-Standards for developing silky-smooth SASS code.
+Standards for developing buttery-smooth CSS code.
 
-
-## Use vanilla CSS code guide
-
-This page is about Sass specific stuff, but you should use the regular [CSS formatting guidelines](css-code-guide.md) as a basis.
-
-
-## File organization
-
-* Fundamental styles like resets, and global utility partials like mixins and variables go in ```sass/global/```.
-* Individual or logical groups of mixins are separated into their own files in `sass/global/mixins/`.
-* Styles related to components/modules/views go in ```sass/components/```.
-* Sass and CSS from other projects goes in ```sass/vendor/```.
-
-```
-sass/
-├── application.scss
-├── global/
-|   ├── _mixins.scss
-|   ├── _variables.scss
-|   ├── _normalize.scss
-|   ├── _scaffolding.scss
-|   └── mixins/
-|       ├── _my-mixin.scss
-|       └── _my-other-mixin.scss
-├── components/
-|   ├── _btn.scss
-|   ├── _list.scss
-|   ├── _nav.scss
-|   ├── _thumbnail.scss
-└── vendor/
-    └── _jquery.ui.core.scss
-```
-
-### Application stylesheet
-
-All files get compiled into the ```application.scss``` stylesheet, and should be scoped accordingly.  
-The application Sass file serves as a "table of contents" and the ```@import``` directives should be listed with vendor dependencies first, then author dependencies and core stylesheets, then components and utility classes, and finally [shame](#shame).  
-Organize the components imports in a manner that makes sense, in other words, group components with the component they extend or inherit from.
-
-```css
-/* Vendor dependancies */
-@import "compass";
-
-/* Authored Dependencies */
-@import "global/variables";
-@import "global/mixins";
-
-/* Core styles */
-@import "global/normalize";
-@import "global/scaffolding";
-
-/* Components */
-@import "components/btn";
-@import "components/list";
-@import "components/nav";
-@import "components/thumbnail";
-
-/* Utility classes */
-@import "global/utilities";
-
-/* Shame */
-@import "shame";
-```
-
-The dependencies like Compass, variables, and mixins generate no compiled CSS at all, they are purely code dependancies. Listing the core styles next means that more specific "components", which come after, have the power to override patterns without having a specificity war.
-
-### Mixins
-
-The `_mixins.scss` file serves as a T.O.C. of the individual mixin files. This allows separation of mixins into logical groupings and is easier to maintain.
-
-```css
-
-/* Mixins */
-
-@import "mixins/my-mixin.scss";
-@import "mixins/my-other-mixin.scss";
-@import "mixins/another-mixin.scss";
-@import "mixins/some-mixins.scss";
-
-```
-
-
-### Partials are named _partial.scss
-
-This is a common naming convention that indicates this file isn't meant to be compiled by itself. It likely has dependancies that would make it impossible to compile by itself. Use dashes in the "actual" filename though, like ```_dropdown-menu.scss```.
-
-
-## SCSS syntax instead of SASS syntax
-Use [SCSS (Sassy CSS) Syntax](http://thesassway.com/articles/sass-vs-scss-which-syntax-is-better) when writing your code instead of the [SASS (Indented) Syntax](http://thesassway.com/articles/sass-vs-scss-which-syntax-is-better).
-
-## Code structure
-
-```@extends``` and ```@includes``` are likely to be overwritten by future elements, placing them at the top of the property list calls them out and avoids the beginning of a [specificity war](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html).
-
-* ```@extends``` should be grouped together at the top of the selector.
-* ```@includes``` should be grouped together after ```@extends```.
-* Regular styles for the current selector should be after ```@includes```.
-* Nested selectors appear last.
-* Nested selectors using ```&``` should appear above child (```>```) nested selectors.
-
-```scss
-.weather {
-  @extends %module; 
-  @include transition(all 0.3s ease);
-  background-color: $sky-light;
-  &.selected {
-    color: #89c;
-  }
-  > h3 {
-    border-bottom: 1px solid #fff;
-    @include transform(rotate(90deg));
-  }
-}
-```
-
-### @extend
-Be cautious when using ```@extend``` in a way that causes unseemly, and unnecessary CSS bloat.  
-Usually, you'll want to only use ```@extend``` with [placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
-
-
-## All vendor prefixes use @mixins
-
-Vendor prefixes are a time-sensitive thing. As browsers update over time, the need for them will fall away. You can update mixins (or the libraries you use will update) to reflect those changes. Even if the mixin ends up being a one-liner, that's OK.  
-The only time you shouldn't @mixin a vendor prefix is when it's super proprietary, unlikely to be standardized as is, and so including other vendor prefixes or the non-prefixed version is likely to cause more harm that good. For example, things like ```-webkit-line-clamp``` or ```-ms-content-zoom-chaining```.
-
-
-## Limit nesting to 3 levels and 50 lines
-
-Nesting selectors more than three levels deep and the code is at risk of being to reliant on HTML structure, overly-specific and difficult to understand.
-
-```scss
-.weather {
-  .module {
-    > h3 {
-      ...
-    }
-  }
-}
-```
-
-50 lines is reasonable length for keeping an entire block on a code editor screen without having to scroll.
-
-```scss
-1.   .weather {
-2.     .module {
-3.       > h3 {
-
-...
-
-48.      }
-49.    }
-50.  }
-51.
-52.  .widget { ... }
-```
-
-
-## Class (Component) naming conventions
-
-* Adhere to the general CSS principles of [Human readable](https://github.webapps.rr.com/pages/ux/css-code-guide/#classes) class names.  
-* For fans of [SMACSS](http://smacss.com): Don't use weird prefixes such as ```l-``` and ```is-``` ... they are a little overwrought.
-
-**Those are the only hard and fast naming rules, what follows are some gentle guidelines...**  
-
-When considering class names relative to *UI Components*, there is no perfect solution for all scenarios.  
-*When it makes sense,* try to use class names and composition with prefixes that mirror the real inheritance structure of your Components. For example, if you have a ```Button``` UI Component, you might create other extending Components using appropriate class names like so:
-```html
-<div class="btn">Basic Button</div>
-<div class="btn btn-alert">Alert Button</div>
-<div class="btn btn-alert btn-alert-flashing">Flashing Alert Button</div>
-```
-From the example above, you could reasonably assume that there's a ```Button``` base Component, which is extended by an ```Alert Button``` Component, which *may* in turn be extended by a ```Flashing Alert Button```.  
-But, there is no way to know for sure how Components are related *just* by their class names alone, so, above is a good starting point to follow, when appropriate; however, you should always: 
-
-> Strive to maintain semantics, but don't sacrifice pragmatism.
-
-So, don't worry too much if you encounter the example below where ```.btn-label``` isn't actually a ```Label Button``` that extends ```Button```, but rather a ```Label``` within a ```Button```. The surrounding markup should be enough for the developer to figure it out with their own common sense.
-
-```html
-<div class="btn">
-   <div class="btn-label">The Label</div>
-</div>
-```
-
-## Compass
-
-[Use it!](http://compass-style.org/)
-In general, it's preferable to use Compass functions over home-grown solutions.
-
-
-## Variablize everything
-
-* Variablize all colors.
-* Numbers (other than 0 or 100%) with strong meaning or frequent use should be variables.
-* Use hyphens (```-```) in variable names.
-* Name variables based on what they represent, not their values, e.g. ```$text-size-large``` instead of ```$text-size-24```.
-* 
-Colors, fonts, and base measurements are all great candidates for variables.  
-If you find yourself writing a number other than 0 or 100% more than once, make it a variable.
-
-```scss
-/* .../global/_variables.scss */
-
-$sky: #0088ce;
-$text-color: $sky;
-$rounded-corners: 6px;
-```
-
-* Most variables should be stored in the ```_variables.scss``` partial; however, it's acceptable to define component specific variables in the component files.
-* In this case, the variables should be stored at the top of the file.
-
-```scss
-/* .../components/btn.scss */
-
-$btn-width: 10px;
-$btn-color: $text-color-secondary;
-
-...
-
-.btn {
-  color: $btn-color;
-  width: $btn-width;
-}
-```
-
-
-## Comments
-
-Try to stick with standard [CSS comments](https://github.webapps.rr.com/pages/ux/css-code-guide#comments), but you can use the Sass style (```//```) comments for trivial comments or quickly debugging.
-
-```scss
-.weather {
-  background-color: $overcast;
-  line-height: 0.6667em; // 24/36
-  // display: inline-block;
-  font-style: italic;
-}
-```
-
-## Shame
-
-In the application stylesheet, ```@import``` the ```_shame.scss``` file last.  
-If you need to make a quick fix, you can do it here. Later when you have proper time, you can move the fix into the proper structure/organization.
-[Read more...](http://csswizardry.com/2013/04/shame-css/)
-
-```css
-@import "compass";
-
-...
-
-@import "shame";
-```
-
-## SCSS Lint
-
-[SCSS Lint](https://github.com/causes/scss-lint) is a great scss linting tool that can be configured to inform you when you don't adhere to these rules.
-Included in this repo is an example `scss-lint.yml` configuration file which is already set up to enforce most of these guidelines.
 
 
 ----------
 
-### Mahalo
+
+
+## Table of contents
+
+* [CSS](#css)
+   * [Write valid CSS](#write-valid-css)
+   * [No IDs](#no-ids)
+   * [CSS syntax](#css-syntax)
+   * [Shorthand](#shorthand)
+   * [Declaration order](#declaration-order)
+      * [Positioning properties](#positioning-properties)
+      * [Width and height](#width-and-height)
+      * [Vendor properties](#vendor-properties)
+   * [Formatting exceptions](#formatting-exceptions)
+      * [Rules with single declarations](#rules-with-single-declarations)
+      * [Prefixed properties](#prefixed-properties)
+   * [Human readable](#human-readable)
+      * [Comments](#comments)
+      * [Classes](#classes)
+      * [Selectors](#selectors)
+* [Additional guides](#m%C3%A8si)
+
+
+
+----------
+
+
+
+## CSS
+
+### Write valid CSS
+
+All CSS code should be valid CSS2.1 or CSS3+.  
+Terminology used in this guide:
+
+````css
+.selector {
+   property: "value";
+}
+````
+
+
+### No IDs
+
+There is a blanket-ban on IDs in CSS. There is literally no point in them, and they only ever cause harm. Everything that needs styling is done so without using IDs.
+
+**:no_entry_sign: Don't:**
+
+````css
+#widget { ... }
+````
+
+
+### CSS Syntax
+
+* When grouping selectors, keep individual selectors to a single line with no space after the commas.
+* Include one space before the opening ```{``` of declaration blocks.
+* Place closing ```}``` of declaration blocks on a new line.
+* Quote attribute values in selectors, e.g., ```input[type="text"]```
+* Each declaration should appear on its own line.
+* Include one space after ```:``` in each declaration.
+* End all declarations with a semi-colon.
+* Comma-separated values should include a space after each comma.
+* Use double-quotes around appropriate values, e.g., ```background-image: url("../hello.jpg");```
+* Avoid specifying units for zero values, e.g., ```margin: 0;``` instead of ```margin: 0px;```
+* Unit-less line-height is preferred, e.g., ```line-height: 1.5;``` instead of ```line-height: 1.5em;```
+* Avoid RGB colors, RGBa is acceptable where needed.
+* Preface floating point values with a leading zero.
+* Lowercase all hex values, e.g.,```#fff``` instead of ```#FFF```
+* Use shorthand hex values where available, e.g., ```#fff``` instead of ```#ffffff```
+
+**:no_entry_sign: Don't:**
+
+````css
+.selector, .selector-secondary, .selector[type=text]{
+   font-family: Helvetica,Arial,sans-serif;
+   margin:0px 0px 15px;
+   line-height:32px;
+   color: rgb(0, 169, 224);
+   background-color:rgba(0,0,0,.5);
+   background-image: url(../hello.jpg);
+   border:1px solid #FFFFFF
+}
+````
+
+**:white_check_mark: Do:**
+
+````css
+.selector,
+.selector-secondary,
+.selector[type="text"] {
+   font-family: Helvetica, Arial, sans-serif;
+   margin: 0 0 15px;
+   line-height: 1.5;
+   color: #00a9e0;
+   background-color: rgba(0, 0, 0, 0.5);
+   background-image: url("../hello.jpg");
+   border: 1px solid #fff;
+}
+````
+
+
+### Shorthand
+
+Use shorthand declarations when possible for the following properties:
+
+* background
+* border
+* font
+* list-style
+* margin
+* padding
+
+````css
+margin: 10px 34px 10px 100px;
+border: 2px solid #fff;
+````
+
+
+### Declaration order
+
+Properties should be organized alphabetically inside each block (with exceptions noted below).
+
+**:no_entry_sign: Don't:**
+
+````css
+.selector {
+   font-weight: normal;
+   background-color: #000;
+   font-family: helvetica, sans-serif;
+   color: #fff;
+}
+````
+
+**:white_check_mark: Do:**
+
+````css
+.selector {
+   background-color: #000;
+   color: #fff;
+   font-family: helvetica, sans-serif;
+   font-weight: normal;
+}
+````
+
+#### Positioning properties
+
+Positioning properties (top, right, bottom, left, z-index) should be grouped together outside of alphabetical ordering when paired with a specific type of positioning (relative, absolute, static):
+
+````css
+.selector {
+   font-size: 1em;
+   margin: 2px;
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: 1;
+}
+````
+
+#### Width and height
+
+Where width and height are both declared, height should always follow width.
+
+````css
+.selector {
+   display: none;
+   text-align: center;
+   width: 50%;
+   height: 200px;
+}
+````
+
+#### Vendor properties
+
+When using vendor prefixed properties, properties should appear in alphabetical order directly before the respective un-prefixed declaration:
+
+````css
+.selector {
+   float: left;
+   -moz-text-shadow: 1px 3px 3px #000;
+   -ms-text-shadow: 1px 3px 3px #000;
+   -o-text-shadow: 1px 3px 3px #000;
+   -webkit-text-shadow: 1px 3px 3px #000;
+   text-shadow: 1px 3px 3px #000;
+   visibility: hidden;
+}
+````
+
+
+### Formatting exceptions
+
+In some cases, it makes sense to deviate slightly from the default [syntax](#css-syntax).
+
+#### Rules with single declarations
+
+In instances where several rules are present with only one declaration each, consider removing new line breaks for readability and faster editing.
+
+````css
+.span1 { width: 60px; }
+.span2 { width: 140px; }
+.span3 { width: 220px; }
+
+.sprite {
+   background-image: url("../img/sprite.png");
+   display: inline-block;
+   width: 16px;
+   height: 15px;
+}
+
+.icon           { background-position: 0 0; }
+.icon-home      { background-position: 0 -20px; }
+.icon-account   { background-position: 0 -40px; }
+````
+
+#### Prefixed properties
+
+When using vendor prefixed properties, indent each property such that the value lines up vertically for easy multi-line editing.
+
+````css
+.selector {
+   -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+           border-radius: 3px;
+}
+````
+
+
+### Human readable
+
+Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others.
+
+#### Comments
+
+* Section comments are separated from the previous block by two lines, and should have one following line of space.
+* Prepend section headings with an equal sign (```=```), to make a _Find_ operation easier.
+
+````css
+.hello { ... }
+
+
+/* ================================================================================ *\
+   =Main
+\* ================================================================================ */
+
+.goodbye { ... }
+````
+
+* Section chunks are preceded by only one line of space.
+
+````css
+.hello { ... }
+
+/* ==================== *\
+   =Main Chunk
+\* ==================== */
+
+.goodbye { ... }
+````
+````css
+.hello { ... }
+
+/**
+ * For longer, multiple line comments that need more room,
+ * add a newline before and after the comment.
+ * Leave one line of space before the next block.
+ */
+
+.goodbye { ... }
+````
+
+````css
+/* Short comments: one line with no trailing space. */
+.hello { ... }
+
+.goodbye {
+   color: #000; /* A short hint can also follow one property/value pair. */
+}
+````
+
+Great code comments convey context or purpose and should not just reiterate a component or class name.
+
+**:no_entry_sign: Don't:**
+
+````css
+/* Modal header */
+.modal-header {
+  ...
+}
+````
+
+**:white_check_mark: Do:**
+
+````css
+/* Wrapping element for .modal-title and .modal-close */
+.modal-header {
+  ...
+}
+````
+
+
+#### Classes
+
+* Use class names that are as short as possible, but as long as necessary.
+* Use meaningful names that describe what element(s) they style.
+* Use lowercase and separate words with hyphens when naming selectors.
+* Avoid underscores and camelCase.
+
+**:no_entry_sign: Don't:**
+
+````css
+.t1-xr { ... }
+.red { ... }
+.comment_form { ... }
+.progressBar { ... }
+````
+
+**:white_check_mark: Do:**
+
+````css
+.tweet { ... }
+.important { ... }
+.comment-form { ... }
+.progress-bar { ... }
+````
+
+
+#### Selectors
+
+* Use classes over generic element tags.
+* Keep them short and limit the number of elements in each selector to three(ish).
+* Scope classes to the closest parent when necessary (e.g., when not using prefixed classes).
+
+**:no_entry_sign: Don't:**
+
+````css
+span { ... }
+.page-container #stream .stream-item .tweet .tweet-header .username { ... }
+.avatar { ... }
+````
+
+**:white_check_mark: Do:**
+
+````css
+.avatar { ... }
+.tweet-header .username { ... }
+.tweet .avatar { ... }
+````
+
+
+
+----------
+
+
+
+#### Mèsi
 
 General principles and [additional guides](https://github.webapps.rr.com/pages/ux/code-guides#the-guides).
