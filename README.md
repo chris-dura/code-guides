@@ -77,5 +77,5 @@ Always write copy, including headings and code comments, in [sentence case](http
 
 ----------
 
-
+#### Regards
 Heavily inspired by [mdo](http://github.com/mdo/code-guide), the [GitHub Styleguide](https://github.com/styleguide) and [css-tricks](http://css-tricks.com/sass-style-guide/).
