@@ -262,7 +262,7 @@ There are now several Sass linting tools available out there.
 
 ### SASS Lint
 
-For compile-time linting, I recommend [SASS Lint](https://github.com/sasstools/sass-lint). SCSS Lint is a young sass/scss linting tool that can be configured to inform you when you don't adhere to *most* of the rules. It isn't quite on par with `scss-lint`, but it's probably good enough. It's also written in Node and has a `gulp` plugin, giving it the advantage over the Ruby-based `scss-lint`. There is a sample (`sass-lint.yml`) included in this repo enforcing the rules it can, and it also details which rules from `scss-lint` it is missing.
+For compile-time linting, I recommend [SASS Lint](https://github.com/sasstools/sass-lint). SCSS Lint is a young sass/scss linting tool that can be configured to inform you when you don't adhere to *most* of the rules. It isn't quite on par with `scss-lint`, but it's probably good enough. It's also written in Node and has a `gulp` plugin, giving it the advantage over the Ruby-based `scss-lint`. There is a sample [`sass-lint.yml`] included in this repo enforcing the rules it can, and it also details which rules from `scss-lint` it is missing.
 
 ### SCSS Lint
 
