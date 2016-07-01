@@ -236,4 +236,6 @@ Because all closing tags look the same, commenting the closing tags can be usefu
 
 ----------
 
+### Obrigado
+
 [General code principles](README.md) and [additional guides](README.md#the-guides).
