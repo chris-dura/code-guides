@@ -1,6 +1,6 @@
 # Default application configuration that all configurations inherit from.
 
-exclude: 'styles/shame.scss' # exclude shame
+exclude: 'styles/_shame.scss' # exclude shame
 
 linters:
 
