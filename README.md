@@ -2,21 +2,11 @@
 
 General principles for developing flexible, durable and sustainable code.
 
-----------
-
-
-
 ## Golden rule
 
 > All code in any code base should look like a single person typed it, no matter how many people contributed.
 
 This means strictly enforcing these agreed upon guidelines at all times. For additions or contributions, please [file an issue on GitHub](https://github.webapps.rr.com/ux/code-guides).
-
-
-
-----------
-
-
 
 ## Clean up
 
@@ -24,20 +14,9 @@ Working on a development team is kind of like having roommates... messy roommate
   
 Generally, you should leave _**all**_ code better off than when you started, so if you find code that violates any of the rules in these guides while completing your story... clean it up. And, *if practical*, clean up commits should be separate from story commits.
 
-
-
-----------
-
-
 ## Indentation
 
 Soft tabs of four (4) spaces should be used to indent code.
-
-
-
-----------
-
-
 
 ## TODOs
 
@@ -50,21 +29,9 @@ TODO comments should start with ```TODO``` and include the author of the comment
 var _foo = bar;
 ````
 
-
-
-----------
-
-
-
 ## Sentence case
 
 Always write copy, including headings and code comments, in [sentence case](http://en.wikipedia.org/wiki/Letter_case#Usage). In other words, aside from titles and proper nouns, only the first word should be capitalized.
-
-
-
-----------
-
-
 
 ## The guides
 
@@ -72,8 +39,6 @@ Always write copy, including headings and code comments, in [sentence case](http
 * [CSS code guide](css-code-guide.md)
 * [SASS code guide](sass-code-guide.md)
 * [JavaScript code guide](js-code-guide.md)
-
-
 
 ----------
 
