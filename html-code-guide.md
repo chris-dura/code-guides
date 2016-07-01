@@ -1,7 +1,6 @@
 # HTML code guide
-Standards for developing baby-smooth HTML code.
 
-----------
+Standards for developing baby-smooth HTML code.
 
 ## Write valid HTML
 
@@ -11,7 +10,6 @@ Terminology used in this guide:
 ````html
 <element attribute="value"></element>
 ````
-
 
 ## HTML5 doctype
 
