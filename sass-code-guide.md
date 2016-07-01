@@ -258,7 +258,7 @@ There are now several Sass linting tools available out there.
 
 ### [CSScomb](http://csscomb.com/)
 
-CSScomb has many capabilities, including being able to work with `*.scss` files. Currently, I actually only make use of the [plugin for Sublime Text](https://github.com/csscomb/sublime-csscomb) to lint my files as I'm authoring them.
+CSScomb has many capabilities, including being able to work with `*.scss` files. Currently, I actually only make use of the [plugin for Sublime Text](https://github.com/csscomb/sublime-csscomb) to lint my files as I'm authoring them. See [`.csscomb.json`](.csscomb.json) for a sample configuration.
 
 ### [SASS Lint](https://github.com/sasstools/sass-lint)
 
