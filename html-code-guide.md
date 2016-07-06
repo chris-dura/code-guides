@@ -233,7 +233,6 @@ Because all closing tags look the same, commenting the closing tags can be usefu
 :no_entry_sign: Writing markup in a javascript file makes the content harder to find, harder to edit, and less performant. **Avoid it**.
 
 ## Linting
-There are now several Sass linting tools available out there.
 
 ### [HTMLHint](http://htmlhint.com/)
 
