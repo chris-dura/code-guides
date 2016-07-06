@@ -230,10 +230,19 @@ Because all closing tags look the same, commenting the closing tags can be usefu
 
 ## JavaScript generated markup
 
-:no_entry_sign: Writing markup in a javascript file makes the content harder to find, harder to edit, and less performant. **Don't do it**.
+:no_entry_sign: Writing markup in a javascript file makes the content harder to find, harder to edit, and less performant. **Avoid it**.
+
+## Linting
+There are now several Sass linting tools available out there.
+
+### [HTMLHint](http://htmlhint.com/)
+
+HTMLHint is a fairly capable linting tool for your markup. It doesn't enforce every rule detailed here, but it's better than nothing.
+
+See [`.htmlhintrc`](.htmlhintrc) for a sample configuration.
 
 ----------
 
 ### Obrigado
 
-[General code principles](README.md) and [additional guides](README.md#the-guides).
+General code principles and [additional guides](README.md#the-guides).
