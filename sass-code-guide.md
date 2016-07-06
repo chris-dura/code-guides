@@ -228,7 +228,7 @@ $btn-width: 10px;
 
 ## Comments
 
-Keep line-length to a sensible maximum, e.g. 60 columns.
+Use the general guidelines about writing [human readable](code-guides.md#human-readable) code and [CSS comments](css-code-guide.md#comments).
 
 ```scss
 // Section comment block
