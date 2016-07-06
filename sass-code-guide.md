@@ -184,13 +184,6 @@ So, don't worry too much if you encounter the example below where `.btn-label` i
 </div>
 ```
 
-## Saying Goodbye to Compass!
-
-I love Compass once. But, it has since been deprecated, and over the years I stopped using Compass' more advanced features and essentially was only using it to compile the CSS and provide vendor prefixes. Now, the same can be easily accomplished with `gulp` and the relevant `gulp-sass` and `gulp-autoprefixer` plugins.
-
-Also, getting rid of yet another Ruby dependency is a bonus!
-
-
 ## Variablize everything
 
 * Variablize all colors.
