@@ -159,7 +159,7 @@ Nesting selectors more than three levels deep and the code is at risk of being t
 
 ## Class (Component) naming conventions
 
-* Adhere to the general CSS principles of [Human readable](css-code-guide.md/#classes) class names.  
+* Adhere to the general CSS principles of [human readable](css-code-guide.md#classes) class names.  
 * For fans of [SMACSS](http://smacss.com): Don't use weird prefixes such as `l-` and `is-` ... they are a little overwrought.
 
 **Those are the only hard and fast naming rules, what follows are some gentle guidelines...**
@@ -221,7 +221,7 @@ $btn-width: 10px;
 
 ## Comments
 
-Use the general guidelines about writing [human readable](README.md#human-readable) code and [CSS comments](css-code-guide.md#comments).
+Use the same general guidelines about writing [human readable](README.md#human-readable) code and [CSS comments](css-code-guide.md#comments).
 
 ```scss
 // Section comment block
