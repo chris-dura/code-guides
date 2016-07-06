@@ -221,7 +221,7 @@ $btn-width: 10px;
 
 ## Comments
 
-Use the general guidelines about writing [human readable](code-guides.md#human-readable) code and [CSS comments](css-code-guide.md#comments).
+Use the general guidelines about writing [human readable](README.md#human-readable) code and [CSS comments](css-code-guide.md#comments).
 
 ```scss
 // Section comment block
