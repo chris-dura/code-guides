@@ -228,9 +228,29 @@ $btn-width: 10px;
 
 ## Comments
 
-Try to stick with standard [CSS comments](css-code-guide.md#comments), but you can use the Sass style (`//`) comments for trivial comments or quickly debugging.
+Keep line-length to a sensible maximum, e.g. 60 columns.
 
 ```scss
+// Section comment block
+// ---------------------------------------------------------
+
+.hello {
+  ...
+}
+
+// Sub-section comment block
+// ---------------------------
+
+.goodbye {
+  ...
+}
+
+// For longer, multiple line comments that need more room,
+// add a newline before and after the comment.
+// Leave one line of space before the next block.
+
+// Basic comments: one line with no trailing space.
+
 .weather {
   background-color: $overcast;
   line-height: 0.6667em; // 24/36
