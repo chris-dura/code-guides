@@ -14,6 +14,10 @@ Working on a development team is kind of like having roommates... messy roommate
   
 Generally, you should leave _**all**_ code better off than when you started, so if you find code that violates any of the rules in these guides while completing your story... clean it up. And, *if practical*, clean up commits should be separate from story commits.
 
+## Human readable
+Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others.  Great code comments convey context or purpose.
+Be sure to write in complete sentences for larger comments and succinct phrases for general notes.
+
 ## Indentation
 
 Soft tabs of four (4) spaces should be used to indent code.
@@ -32,6 +36,17 @@ var _foo = bar;
 ## Sentence case
 
 Always write copy, including headings and code comments, in [sentence case](http://en.wikipedia.org/wiki/Letter_case#Usage). In other words, aside from titles and proper nouns, only the first word should be capitalized.
+
+## Editor preferences
+
+Set your editor to the following settings to avoid common code inconsistencies and dirty diffs:
+
+- Use soft-tabs set to four spaces.
+- Trim trailing white space on save.
+- Set encoding to UTF-8.
+- Add new line at end of files.
+
+Consider documenting and applying these preferences to your project's [.editorconfig](.editorconfig) file.
 
 ## The guides
 
