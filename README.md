@@ -46,7 +46,7 @@ Set your editor to the following settings to avoid common code inconsistencies a
 - Set encoding to UTF-8.
 - Add new line at end of files.
 
-Consider documenting and applying these preferences to your project's [.editorconfig](.editorconfig) file.
+Consider documenting and applying these preferences to your project's [`.editorconfig`](.editorconfig) file.
 
 ## The guides
 
