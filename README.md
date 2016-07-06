@@ -6,7 +6,7 @@ General principles for developing flexible, durable and sustainable code.
 
 > All code in any code base should look like a single person typed it, no matter how many people contributed.
 
-This means strictly enforcing these agreed upon guidelines at all times. For additions or contributions, please [file an issue on GitHub](https://github.webapps.rr.com/ux/code-guides).
+This means strictly enforcing these agreed upon guidelines at all times. For additions or contributions, please [file an issue on GitLab](https://gitlab.spectrumxg.com/dura/code-guides).
 
 ## Clean up
 
@@ -15,8 +15,9 @@ Working on a development team is kind of like having roommates... messy roommate
 Generally, you should leave _**all**_ code better off than when you started, so if you find code that violates any of the rules in these guides while completing your story... clean it up. And, *if practical*, clean up commits should be separate from story commits.
 
 ## Human readable
-Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others.  Great code comments convey context or purpose.
-Be sure to write in complete sentences for larger comments and succinct phrases for general notes.
+Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others.
+
+Great code comments convey context or purpose. Be sure to write in complete sentences for larger comments and succinct phrases for general notes.
 
 ## Indentation
 
@@ -46,16 +47,16 @@ Set your editor to the following settings to avoid common code inconsistencies a
 - Set encoding to UTF-8.
 - Add new line at end of files.
 
-Consider documenting and applying these preferences to your project's [`.editorconfig`](.editorconfig) file.
+Consider documenting and applying these preferences to your project's [.editorconfig](.editorconfig) file.
 
 ## The guides
 
 * [HTML code guide](html-code-guide.md)
 * [CSS code guide](css-code-guide.md)
 * [SASS code guide](sass-code-guide.md)
-* [JavaScript code guide](js-code-guide.md)
+* JavaScript code guide
 
 ----------
 
 ### Regards
-Heavily inspired by [mdo](http://github.com/mdo/code-guide), the [GitHub Styleguide](https://github.com/styleguide) and [css-tricks](http://css-tricks.com/sass-style-guide/).
+Heavily inspired by [mdo](http://codeguide.co), the [GitHub Styleguide](https://github.com/styleguide) and [css-tricks](http://css-tricks.com/sass-style-guide/).
