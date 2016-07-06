@@ -287,4 +287,4 @@ Included in this repo is an example [`.scss-lint.yml`](.scss-lint.yml) configura
 
 ### Mahalo
 
-General principles and [additional guides](code-guides.md#the-guides).
+General principles and [additional guides](README.md#the-guides).
